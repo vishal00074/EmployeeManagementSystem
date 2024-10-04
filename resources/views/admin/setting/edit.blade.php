@@ -1,0 +1,68 @@
+@extends('admin.setting.app')
+
+
+@section('content')
+ <!-- Content area  -->
+<div class="content">
+     <!-- Page length options  -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <div class="col-sm-6 mb-1" align="left">
+                <h6 class="card-title"><b>Edit Details</b></h6>
+            </div>
+            <div class="col-sm-6 mb-1" align="right">
+                <a class="btn btn-success" href="{{ url('admin/setting') }}">Back</a>
+            </div>
+        </div>
+        
+        <div class="card-body"> 
+            <div class="row">
+                <div class="col-md-12">
+                   <form action="{{ route('setting.update', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <!--<h4><b>Add Details</b></h4>-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{$data->name}}" readonly> 
+                                    @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Late Coming Time</label>
+                                    <input type="time" class="form-control" name="late_coming_time" value="{{$data->late_coming_time}}"> 
+                                    @if ($errors->has('late_coming_time'))
+                                        <span class="text-danger">{{ $errors->first('late_coming_time') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                          
+                           
+                              
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary" id="submit_form">Submit form <i class="icon-paperplane ml-2"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@endsection
+
